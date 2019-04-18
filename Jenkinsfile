@@ -19,7 +19,8 @@ pipeline{
         // }
     post{
         always{
-            archiveArtifacts artifacts: 'output/**'
+           //archiveArtifacts artifacts: 'output/**'
+            archiveArtifacts artifacts: 'search-result'
              bat "docker-compose down"
         }
     }    
