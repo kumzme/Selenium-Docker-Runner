@@ -11,17 +11,18 @@ pipeline{
               bat "docker-compose up search-module flight-module"
           }
         }
-        stage("Stop Grid"){
-            steps{
-                bat "docker-compose down"
-            }
+        // stage("Stop Grid"){
+        //     steps{
+        //         bat "docker-compose down"
+        //     }
+        // }
+    } 
+    post{
+        always{
+          // archiveArtifacts artifacts: 'output//**'
+           archiveArtifacts artifacts: 'search-result'
+             bat "docker-compose down"
         }
-    // post{
-    //     always{
-    //       // archiveArtifacts artifacts: 'output/**'
-    //        archiveArtifacts artifacts: 'search-result'
-    //          bat "docker-compose down"
-    //     }
-    // }    
-    }  
+    }    
+    //}  
 }
