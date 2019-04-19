@@ -20,7 +20,7 @@ pipeline{
     post{
         always{
            dir('output') {
-           archiveArtifacts artifacts: '**/*'
+           archiveArtifacts artifacts: '**/*',allowEmptyArchive: true
           //archiveArtifacts artifacts: 'search-result'
              bat "docker-compose down"
         }
