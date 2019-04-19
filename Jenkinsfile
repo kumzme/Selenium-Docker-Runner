@@ -19,10 +19,12 @@ pipeline{
     } 
     post{
         always{
-           archiveArtifacts artifacts: '**/output/*'
+           dir('output') {
+           archiveArtifacts artifacts: '**/*',allowEmptyArchive: true
           //archiveArtifacts artifacts: 'search-result'
              bat "docker-compose down"
         }
     }    
     //}  
+}
 }
